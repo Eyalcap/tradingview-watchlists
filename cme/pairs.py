@@ -1,7 +1,7 @@
 import sys
 import argparse
 from string import ascii_uppercase
-import requests
+from security import safe_requests
 
 
 parser = argparse.ArgumentParser(description='TV tickers')
@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     all_symbols = []
     for c in ascii_uppercase:
-        symbols = requests.get(f'https://symbol-search.tradingview.com/symbol_search/', params={
+        symbols = safe_requests.get(f'https://symbol-search.tradingview.com/symbol_search/', params={
             'exchange': args.exchange.upper(),
             'lang': 'en',
             'domain': 'production',
