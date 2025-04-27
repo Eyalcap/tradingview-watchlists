@@ -11,7 +11,7 @@ parser.add_argument('-p', '--perps', action='store_true')
 if __name__ == "__main__":
     args = parser.parse_args()
 
-    symbols = requests.get('https://ftx.com/api/markets').json()['result']
+    symbols = requests.get('https://ftx.com/api/markets', timeout=60).json()['result']
 
     if args.futures:
         symbols = filter(lambda x: x['type'] == 'future', symbols)

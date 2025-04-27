@@ -12,7 +12,7 @@ if __name__ == "__main__":
     if args.margin:
         url = 'https://api-pub.bitfinex.com/v2/conf/pub:list:pair:margin'
 
-    symbols = requests.get(url).json()[0]
+    symbols = requests.get(url, timeout=60).json()[0]
    
     if args.quote_asset:
         symbols = filter(lambda x: x.endswith(args.quote_asset.upper()), symbols)
