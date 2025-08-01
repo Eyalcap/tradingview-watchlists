@@ -7,7 +7,7 @@ parser.add_argument('-q', '--quote-asset')
 if __name__ == "__main__":
     args = parser.parse_args()
 
-    symbols = requests.get('https://api.huobi.pro/v1/common/symbols').json()['data']
+    symbols = requests.get('https://api.huobi.pro/v1/common/symbols', timeout=60).json()['data']
    
     if args.quote_asset:
         symbols = filter(lambda x: x['quote-currency'] == args.quote_asset.lower(), symbols)

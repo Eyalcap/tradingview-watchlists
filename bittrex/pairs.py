@@ -8,7 +8,7 @@ parser.add_argument('-s', '--stocks', action='store_true')
 if __name__ == "__main__":
     args = parser.parse_args()
 
-    symbols = requests.get('https://api.bittrex.com/v3/markets').json()
+    symbols = requests.get('https://api.bittrex.com/v3/markets', timeout=60).json()
     symbols = filter(lambda x: x['status'] == 'ONLINE', symbols)
    
     if args.quote_asset:
