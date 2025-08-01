@@ -18,7 +18,7 @@ if __name__ == "__main__":
             'lang': 'en',
             'domain': 'production',
             'text': c
-        }).json()
+        }, timeout=60).json()
         symbols = list(map(lambda x: '{}:{}'.format(args.exchange.upper(), x['contracts'][0]['symbol']), symbols))
 
         if len(symbols) >= 50:
